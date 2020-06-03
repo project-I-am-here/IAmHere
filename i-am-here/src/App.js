@@ -1,9 +1,14 @@
+
 import React from 'react';
-import './App.css';
-import Login from './login/Login'
+import Dashboard from './themes/Dashboard'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-function App() {
-  return (<Login />);
+export default function App() {
+  return (
+    <>
+      <Router>
+        <Dashboard></Dashboard>
+      </Router>
+    </>
+  );
 }
-
-export default App;
