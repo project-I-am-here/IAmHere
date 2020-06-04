@@ -1,20 +1,31 @@
 
 import React from 'react';
 import Dashboard from './themes/Dashboard'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { isAuthenticated } from './services/auth'
 import Login from './Login'
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+          <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+        )
+    }
+  />
+);
 
 export default function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route path="/dashboard">
-            <Dashboard></Dashboard>
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/login">
+          <PrivateRoute path="/dashboard"
+            component={() => Dashboard}></PrivateRoute>
+          <Route exact path="/">
             <Login />
           </Route>
         </Switch>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import { login } from './services/auth'
+import { api } from './services/api'
 
 function Copyright() {
     return (
@@ -46,8 +49,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+
+
+export default function SignIn(props) {
+    const [credentials, setCredentials] = useState({})
+
     const classes = useStyles();
+
+    const handleSignIn = async (e) => {
+        e.preventDefault()
+        if (!credentials.email || !credentials.password) {
+            console.log('Digite seu login ou senhas')
+        } else {
+            try {
+                const response = await api.post("/login", login)
+                login(response.data.token)
+                props.history.push('/dashboard')
+            } catch (error) {
+                console.log('Houve um erro no login')
+            }
+        }
+    }
+
+    const handleChange = (evt) => {
+        const value = evt.target.value;
+        setCredentials({
+            ...credentials,
+            [evt.target.name]: value
+        });
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -59,33 +89,35 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={handleSignIn}>
                     <TextField
+                        onChange={e => handleChange(e)}
                         variant="outlined"
                         margin="normal"
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="Login"
                         name="email"
                         autoComplete="email"
                         autoFocus
                     />
                     <TextField
+                        onChange={e => handleChange(e)}
                         variant="outlined"
                         margin="normal"
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label="Senha"
                         type="password"
                         id="password"
                         autoComplete="current-password"
                     />
-                    <FormControlLabel
+                    {/* <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
-                    />
+                    /> */}
                     <Button
                         type="submit"
                         fullWidth

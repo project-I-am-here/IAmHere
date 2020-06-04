@@ -25,15 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NewPatient(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        // name: '',
-        // surname: '',
-        // email: '',
-        // profession: '',
-        // cpf: '',
-        // rg: '',
-        // naturality: '',
-        // phone: ''
+    const [state, setState] = useState({
     })
 
     const handleClose = () => {
