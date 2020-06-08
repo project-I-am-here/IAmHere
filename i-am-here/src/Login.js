@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 
 import { login } from './services/auth'
 import { api } from './services/api'
+import history from './services/history'
 
 function Copyright() {
     return (
@@ -62,9 +63,10 @@ export default function SignIn(props) {
             console.log('Digite seu login ou senhas')
         } else {
             try {
-                const response = await api.post("/login", login)
+                const response = await api.post("/login", credentials)
                 login(response.data.token)
-                props.history.push('/dashboard')
+                history.push('/dashboard')
+                console.log('logado')
             } catch (error) {
                 console.log('Houve um erro no login')
             }

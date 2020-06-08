@@ -1,9 +1,10 @@
 
 import React from 'react';
 import Dashboard from './themes/Dashboard'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { isAuthenticated } from './services/auth'
 import Login from './Login'
+import history from './services/history'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -21,12 +22,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 export default function App() {
   return (
     <>
-      <Router>
+      <Router history={history}>
         <Switch>
           <PrivateRoute path="/dashboard"
-            component={() => Dashboard}></PrivateRoute>
-          <Route exact path="/">
-            <Login />
+            component={Dashboard}></PrivateRoute>
+          <Route exact path="/" component={Login}>
           </Route>
         </Switch>
       </Router>

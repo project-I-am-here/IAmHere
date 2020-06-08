@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 export const mainListItems = (
 
     <div>
-        <Link to="/" style={{ textDecoration: 'none', color: '#757575' }}>
+        <Link to="/dashboard" style={{ textDecoration: 'none', color: '#757575' }}>
             <ListItem button>
                 <ListItemIcon>
                     <DashboardIcon />
