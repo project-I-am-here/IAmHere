@@ -5,6 +5,7 @@ import Login from '../login/Login';
 import { history } from '../../services/history';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import PublicRoute from '../publicRoute/PublicRoute';
+import SignUp from '../signup/SignUp';
 
 export default function Routes() {
   return (
@@ -13,6 +14,8 @@ export default function Routes() {
         <PrivateRoute path="/app"
           component={Dashboard} />
         <PublicRoute exact path="/login" component={Login}>
+        </PublicRoute>
+        <PublicRoute exact path="/signup" component={SignUp}>
         </PublicRoute>
         <PrivateRoute path="*"
           component={Dashboard} />
