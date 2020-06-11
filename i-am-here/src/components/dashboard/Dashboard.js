@@ -12,19 +12,17 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems } from './listItems';
-import Chart from './Chart';
-import Patients from '../components/patients/Patients';
+import { mainListItems } from '../listItems/listItems';
+import Patients from '../patients/Patients';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import { Switch, Route, Router } from 'react-router-dom';
-import { logout } from '../services/auth';
-import { history } from '../services/history';
-import PrivateRoute from '../PrivateRoute';
+import { Switch } from 'react-router-dom';
+import { logout } from '../../services/auth';
+import { history } from '../../services/history';
+import PrivateRoute from '../privateRoute/PrivateRoute';
 
 
 const drawerWidth = 240;
@@ -117,7 +115,6 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleLogout = () => {
     logout();
     history.push('/login');
@@ -184,6 +181,11 @@ export default function Dashboard() {
               <PrivateRoute exact path="/app/paciente">
                 <Grid item xs={12}>
                   <Patients></Patients>
+                </Grid>
+              </PrivateRoute>
+              <PrivateRoute exact path="*">
+                <Grid item xs={12}>
+                  <h1>Page not found</h1>
                 </Grid>
               </PrivateRoute>
             </Switch>

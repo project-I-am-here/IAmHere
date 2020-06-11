@@ -1,6 +1,6 @@
 import React from 'react';
-import { Router, Switch, Route, Redirect } from 'react-router-dom';
-import { isAuthenticated } from './services/auth';
+import { Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../../services/auth';
 
 const PublicRoute = props => (
   isAuthenticated() ? (
