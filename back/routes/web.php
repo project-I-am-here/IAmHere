@@ -12,16 +12,15 @@
 */
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    // Matches "/api/register
+    //Cadastro
     $router->post('register', 'AuthController@register');
 
-    // Matches "/api/login
     $router->post('login', 'AuthController@login');
 
-
-    $router->get("/users", "UserController@getAll");
+    $router->get("/profile", "UserController@profile");
 
     $router->group(['prefix' => "/user"], function () use ($router){
+        $router->get("/", "UserController@getAll");
         $router->get("/{id}", "UserController@get");
         $router->post("/", "UserController@store");
         $router->put("/{id}", "UserController@update");
@@ -42,6 +41,14 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post("/", "ProfessionalController@store");
         $router->put("/{id}", "ProfessionalController@update");
         $router->delete("/{id}", "ProfessionalController@destroy");
+    });
+
+    $router->group(['prefix' => "/patient"], function () use ($router){
+        $router->get("/", "PatientController@getAll");
+        $router->get("/{id}", "PatientController@get");
+        $router->post("/", "PatientController@store");
+        $router->put("/{id}", "PatientController@update");
+        $router->delete("/{id}", "PatientController@destroy");
     });
 
 });

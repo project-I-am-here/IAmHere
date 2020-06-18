@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ClinicController extends Controller
 {
     /**
-     * Instantiate a new UserController instance.
+     * Instantiate a new ClinicController instance.
      *
      * @return void
      */

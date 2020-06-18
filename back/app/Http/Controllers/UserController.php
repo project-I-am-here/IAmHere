@@ -20,10 +20,9 @@ class UserController extends Controller
 
     public function __construct(Account $account)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->model = $account;
     }
-
 
     public function profile()
     {
@@ -49,15 +48,15 @@ class UserController extends Controller
         $account = $this->model->create($request->all());
         return response()->json($account, Response::HTTP_CREATED);
     }
-    public function update($id_account, Request $request){
-        $account = $this->model->find($id_account)
+    public function update($id, Request $request){
+        $account = $this->model->find($id)
             ->update($request->all());
-
         return response()->json($account, Response::HTTP_OK);
+
     }
 
-    public function destroy($id_account){
-        $account = $this->model->find($id_account)
+    public function destroy($id){
+        $account = $this->model->find($id)
             ->delete();
 
         return response()->json(null, Response::HTTP_OK);

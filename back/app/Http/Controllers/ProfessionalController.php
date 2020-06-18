@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class ProfessionalController extends Controller
 {
     /**
-     * Instantiate a new UserController instance.
+     * Instantiate a new ProfessionalController instance.
      *
      * @return void
      */
@@ -25,11 +25,6 @@ class ProfessionalController extends Controller
         $this->model = $professional;
     }
 
-
-    public function profile()
-    {
-        return response()->json(['user' => Auth::user()], 200);
-    }
 
     public function getAll(){
         $professional = $this->model->all();
