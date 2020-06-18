@@ -19,6 +19,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get("/profile", "UserController@profile");
 
+    $router->get("/type/", "UserController@getType");
+
     $router->group(['prefix' => "/user"], function () use ($router){
         $router->get("/", "UserController@getAll");
         $router->get("/{id}", "UserController@get");

@@ -37,7 +37,7 @@ class AuthController extends Controller
             $acount->profession = $request->input('profession');
             $acount->id_adress = $request->input('id_adress');
             $acount->status = $request->input('status');
-            $acount->type = 1;
+            $acount->type = $request->input('type');
 
             $acount->save();
 

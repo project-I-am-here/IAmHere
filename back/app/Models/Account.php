@@ -31,6 +31,48 @@ class Account extends Model implements AuthenticatableContract, AuthorizableCont
         'status'
     ];
 
+    public function getByType($type) {
+        $items = [];
+
+        if ($type == '2') {
+            $result = Account::where('type', 1)
+                ->join('patient', 'account.id', '=', 'patient.id_account')
+                ->select(
+                    '*'
+                )
+                ->get();
+
+            foreach ($result as $item) {
+                array_push($items, [
+                    'id' => $item['account_id'],
+                    'name' => $item['account_name'],
+                    'x' => [
+                        'id' => 1
+                    ],
+                ]);
+            }
+        } else {
+            $result = Account::where('type', 2)
+                ->join('professional', 'account.id', '=', 'professional.id_account')
+                ->select(
+                    '*'
+                )
+                ->get();
+
+            foreach ($result as $item) {
+                array_push($items, [
+                    'id' => $item['account_id'],
+                    'name' => $item['account_name'],
+                    'x' => [
+                        'id' => 1
+                    ],
+                ]);
+            }
+        }
+
+        return $result;
+    }
+
     protected $hidden = [
         'password',
     ];
