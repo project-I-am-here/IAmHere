@@ -24,12 +24,6 @@ class ClinicController extends Controller
         $this->model = $clinic;
     }
 
-
-//    public function profile()
-//    {
-//        return response()->json(['user' => Auth::user()], 200);
-//    }
-
     public function getAll(){
         $clinic = $this->model->all();
         if(count($clinic) > 0){
@@ -49,8 +43,8 @@ class ClinicController extends Controller
         $clinic = $this->model->create($request->all());
         return response()->json($clinic, Response::HTTP_CREATED);
     }
-    public function update($id_clinic, Request $request){
-        $clinic= $this->model->find($id_clinic)
+    public function update($id, Request $request){
+        $clinic= $this->model->find($id)
             ->update($request->all());
 
         return response()->json($clinic, Response::HTTP_OK);

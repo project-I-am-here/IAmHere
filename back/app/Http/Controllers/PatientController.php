@@ -49,15 +49,15 @@ class PatientController extends Controller
         $patient= $this->model->create($request->all());
         return response()->json($patient, Response::HTTP_CREATED);
     }
-    public function update($id_patient, Request $request){
-        $patient = $this->model->find($id_patient)
+    public function update($id, Request $request){
+        $patient = $this->model->find($id)
             ->update($request->all());
 
         return response()->json($patient, Response::HTTP_OK);
     }
 
-    public function destroy($id_patient){
-        $patient = $this->model->find($id_patient)
+    public function destroy($id){
+        $patient = $this->model->find($id)
             ->delete();
 
         return response()->json(null, Response::HTTP_OK);

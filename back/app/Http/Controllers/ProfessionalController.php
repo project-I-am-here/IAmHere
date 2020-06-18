@@ -44,15 +44,15 @@ class ProfessionalController extends Controller
         $professional= $this->model->create($request->all());
         return response()->json($professional, Response::HTTP_CREATED);
     }
-    public function update($id_professional, Request $request){
-        $professional = $this->model->find($id_professional)
+    public function update($id, Request $request){
+        $professional = $this->model->find($id)
             ->update($request->all());
 
         return response()->json($professional, Response::HTTP_OK);
     }
 
-    public function destroy($id_professional){
-        $professional = $this->model->find($id_professional)
+    public function destroy($id){
+        $professional = $this->model->find($id)
             ->delete();
 
         return response()->json(null, Response::HTTP_OK);
