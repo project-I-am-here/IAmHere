@@ -3,6 +3,6 @@ import { http } from  './config'
 export default {
 
   listar: () => {
-    return http.get('clinic')
+    return http.get('clinic/1')
   }
 }

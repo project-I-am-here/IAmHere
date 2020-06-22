@@ -4,7 +4,7 @@ import Router from 'vue-router'
 // Dashboard Components
 import dashboard from '../views/dashboard'
 
-//Users
+// Users
 import users from '../views/User/users'
 import userForm from '../views/User/usersforms'
 
@@ -27,16 +27,15 @@ import typography from '../views/ui-components/typography'
 import tabs from '../views/ui-components/tabs'
 import tooltips from '../views/ui-components/tooltips'
 
-// Form Components
-import forms from '../views/forms/forms'
-
 // Sample Pages
 import error404 from '../views/sample-pages/error-404'
 import error500 from '../views/sample-pages/error-500'
 import login from '../views/sample-pages/login'
 import register from '../views/sample-pages/register'
+
 import patient from '../views/Patient/patient'
-import professional from '../services/professional'
+import clinic from '../views/Clinic/clinic'
+import professional from '../views/professional/professional'
 
 Vue.use(Router)
 
@@ -153,11 +152,6 @@ export default new Router({
     component: userForm
   },
   {
-    path: '/forms',
-    name: 'forms',
-    component: forms
-  },
-  {
     path: '/patient',
     name: 'patient',
     component: patient
@@ -166,6 +160,11 @@ export default new Router({
     path: '/professional',
     name: 'professional',
     component: professional
+  },
+  {
+    path: '/clinic',
+    name: 'clinic',
+    component: clinic
   }
   ]
 })

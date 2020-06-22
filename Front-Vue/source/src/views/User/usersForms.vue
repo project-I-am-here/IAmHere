@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="Users">
+  <section class="UsersForms">
     <div class="row">
       <div class="col-9 grid-margin">
         <div class="card">
@@ -32,8 +32,6 @@
             <b-form-group label="Profissão" label-for="input11">
               <b-form-input type="text" id="nome" placeholder="Username" size="lg"></b-form-input>
             </b-form-group>
-
-
             <b-form-group label="Endereço" label-for="input11">
               <b-form-input type="text" id="nome" placeholder="Username" size="lg"></b-form-input>
             </b-form-group>
