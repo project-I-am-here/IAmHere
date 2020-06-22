@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function __construct(Account $account)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->model = $account;
     }
 

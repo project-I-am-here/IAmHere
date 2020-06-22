@@ -23,10 +23,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->group(['prefix' => "/user"], function () use ($router){
         $router->get("/", "UserController@getAll");
+        $router->get("/type", "UserController@getType");
+        $router->get("/profile", "UserController@profile");
         $router->get("/{id}", "UserController@get");
         $router->post("/", "UserController@store");
         $router->put("/{id}", "UserController@update");
         $router->delete("/{id}", "UserController@destroy");
+
     });
 
     $router->group(['prefix' => "/clinic"], function () use ($router){
