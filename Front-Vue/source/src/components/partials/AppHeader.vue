@@ -1,7 +1,7 @@
 <template lang="html">
   <b-navbar class="fixed-top" toggleable="md" type="dark" variant="info">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-      <a class="navbar-brand brand-logo" href="/demo/star-admin-vue/"><p style="color: #000000; font-size: 50px">Soull</p></a>
+      <a class="navbar-brand brand-logo" href="/demo/star-admin-vue/"><img src="../../assets/images/soull.png" alt="logo" style="width: auto"/></a>
       <a class="navbar-brand brand-logo-mini" href="/demo/star-admin-vue/"><img src="../../assets/images/logo-mini.svg" alt="logo"/></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center ml-auto ml-lg-0">
