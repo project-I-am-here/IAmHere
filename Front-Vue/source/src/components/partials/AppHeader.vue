@@ -1,7 +1,7 @@
 <template lang="html">
   <b-navbar class="fixed-top" toggleable="md" type="dark" variant="info">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-      <a class="navbar-brand brand-logo" href="/demo/star-admin-vue/"><p>INDUCA</p></a>
+      <a class="navbar-brand brand-logo" href="/demo/star-admin-vue/"><p style="color: #000000; font-size: 50px">Soull</p></a>
       <a class="navbar-brand brand-logo-mini" href="/demo/star-admin-vue/"><img src="../../assets/images/logo-mini.svg" alt="logo"/></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center ml-auto ml-lg-0">
@@ -106,8 +106,9 @@
           <template slot="button-content">
             <img src="../../assets/images/faces/face4.jpg" alt="profile image"  class="img-xs rounded-circle">
           </template>
-          <b-dropdown-item href="#" class="preview-item flex-wrap">Profile</b-dropdown-item>
-          <b-dropdown-item href="#" class="preview-item flex-wrap">Signout</b-dropdown-item>
+          <b-dropdown-item to="/profile/" class="preview-item flex-wrap">Perfil</b-dropdown-item>
+
+          <b-dropdown-item href="#" class="preview-item flex-wrap">Sair</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <button class="navbar-toggler navbar-toggler-right align-self-center" type="button" @click="collapedMobileSidebar()">

@@ -36,6 +36,9 @@ import register from '../views/sample-pages/register'
 import patient from '../views/Patient/patient'
 import clinic from '../views/Clinic/clinic'
 import professional from '../views/professional/professional'
+import schedule from '../views/schedule/schedule'
+import profile from "../views/User/profile";
+import usersForms from "../views/User/usersForms";
 
 Vue.use(Router)
 
@@ -147,9 +150,14 @@ export default new Router({
     component: users
   },
   {
+    path: '/profile',
+    name: 'profile',
+    component: profile
+  },
+  {
     path: '/userForm',
     name: 'userForm',
-    component: userForm
+    component: usersForms
   },
   {
     path: '/patient',
@@ -165,6 +173,11 @@ export default new Router({
     path: '/clinic',
     name: 'clinic',
     component: clinic
+  },
+  {
+    path: '/schedule',
+    name: 'schedule',
+    component: schedule
   }
   ]
 })

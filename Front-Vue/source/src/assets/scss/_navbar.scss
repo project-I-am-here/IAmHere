@@ -1,7 +1,7 @@
 /* Navbar */
 .navbar {
   font-family: $type-1;
-  background: $blue-teal-gradient;
+  background: $purple-teal-gradient;
   padding: 0;
   transition: background $action-transition-duration $action-transition-timing-function;
   -webkit-transition: background $action-transition-duration $action-transition-timing-function;
@@ -18,7 +18,7 @@
     height: $navbar-height;
     @media(max-width: 991px) {
       width: $sidebar-width-sm;
-    }    
+    }
 
     .navbar-brand {
       color: $white;
@@ -64,7 +64,7 @@
     padding: 0 15px;
     height: $navbar-height;
     width: calc(100% - #{$sidebar-width-lg});
-    
+
     @media(max-width: 991px) {
       width: calc(100% - #{$sidebar-width-sm});
     }
@@ -119,13 +119,13 @@
             -webkit-box-shadow: 0 0 13px -3px rgba(0,0,0,0.10);
             -moz-box-shadow: 0 0 13px -3px rgba(0,0,0,0.10);
             box-shadow: 0 0 13px -3px rgba(0,0,0,0.10);
-            position: absolute;            
+            position: absolute;
             font-size: 0.9rem;
             margin-top: 0;
             right: 0;
             left: auto;
             top: $navbar-height;
-            
+
             .dropdown-item {
               @extend .d-flex;
               @extend .align-items-center;
