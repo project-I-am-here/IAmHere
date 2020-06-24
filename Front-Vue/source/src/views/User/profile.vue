@@ -38,28 +38,28 @@
 </template>
 
 <script lang="js">
-  import Clinic from '../../services/clinic'
-  import Users from '../../services/users'
+import Clinic from '../../services/clinic'
+import Users from '../../services/users'
 
-  export default {
-    name: 'Clinics',
-    data () {
-      return {
-        clinic: [],
-        user: []
-      }
-    },
-    mounted () {
-      Clinic.listar().then(respost => {
-        console.log(respost.data)
-        this.clinic = respost.data
-      })
-      Users.listar().then(respost => {
-        console.log(respost.data)
-        this.user = respost.data
-      })
+export default {
+  name: 'Clinics',
+  data () {
+    return {
+      clinic: [],
+      user: []
     }
+  },
+  mounted () {
+    Clinic.listar().then(respost => {
+      console.log(respost.data)
+      this.clinic = respost.data
+    })
+    Users.listar().then(respost => {
+      console.log(respost.data)
+      this.user = respost.data
+    })
   }
+}
 </script>
 
 <style scoped lang="scss">

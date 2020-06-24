@@ -50,7 +50,7 @@
 import User from '../../services/users'
 
 export default {
-   name: 'Users',
+  name: 'Users',
   data () {
     return {
       listUsers: []

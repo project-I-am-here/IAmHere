@@ -33,8 +33,6 @@
         </li>
 
         <li class="nav-item"><router-link class="nav-link" to="/users/"><img class="menu-icon" src="../../assets/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Usuários</span></router-link></li>
-
-
         <li class="nav-item"><router-link class="nav-link" to="/forms/"><img class="menu-icon" src="../../assets/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Config</span></router-link></li>
 
         <li class="nav-item">

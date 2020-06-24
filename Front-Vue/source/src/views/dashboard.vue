@@ -318,7 +318,7 @@
 import User from '../services/users'
 
 export default {
-   name: 'dashboard',
+  name: 'dashboard',
   data () {
     return {
       listUsers: []

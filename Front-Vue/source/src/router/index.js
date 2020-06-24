@@ -6,7 +6,7 @@ import dashboard from '../views/dashboard'
 
 // Users
 import users from '../views/User/users'
-import userForm from '../views/User/usersforms'
+import usersForms from '../views/User/usersForms'
 
 // Widgets
 import widgets from '../views/widgets'
@@ -30,6 +30,7 @@ import tooltips from '../views/ui-components/tooltips'
 // Sample Pages
 import error404 from '../views/sample-pages/error-404'
 import error500 from '../views/sample-pages/error-500'
+
 import login from '../views/sample-pages/login'
 import register from '../views/sample-pages/register'
 
@@ -37,8 +38,9 @@ import patient from '../views/Patient/patient'
 import clinic from '../views/Clinic/clinic'
 import professional from '../views/professional/professional'
 import schedule from '../views/schedule/schedule'
-import profile from "../views/User/profile";
-import usersForms from "../views/User/usersForms";
+
+// Sample Pages
+import profile from '../views/User/profile'
 
 Vue.use(Router)
 
