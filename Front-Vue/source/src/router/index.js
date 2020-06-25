@@ -6,7 +6,7 @@ import dashboard from '../views/dashboard'
 
 // Users
 import users from '../views/User/users'
-import usersForms from '../views/User/usersForms'
+import usersForms from "../views/User/usersForms";
 
 // Widgets
 import widgets from '../views/widgets'
