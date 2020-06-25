@@ -60,7 +60,7 @@
 import User from '../../services/users'
 
 export default {
-  name: 'Users',
+  name: 'usersForms',
   data () {
     return {
       listUser: []
