@@ -31,7 +31,7 @@ import tooltips from '../views/ui-components/tooltips'
 import error404 from '../views/sample-pages/error-404'
 import error500 from '../views/sample-pages/error-500'
 
-import login from '../views/sample-pages/login'
+// import login from '../views/sample-pages/login'
 import register from '../views/sample-pages/register'
 
 import patient from '../views/Patient/patient'
@@ -41,15 +41,20 @@ import schedule from '../views/schedule/schedule'
 
 // Sample Pages
 import profile from '../views/User/profile'
+import { isAuthenticated } from '../services/auth'
 
 Vue.use(Router)
 
 export default new Router({
   linkActiveClass: 'active',
   routes: [{
-    path: '/',
+    path: '/dashboard',
     name: 'dashboard',
-    component: dashboard
+    component: dashboard,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/widgets',
@@ -66,11 +71,11 @@ export default new Router({
     name: 'error-500',
     component: error500
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: login
+  // },
   {
     path: '/register',
     name: 'register',
@@ -149,37 +154,65 @@ export default new Router({
   {
     path: '/users',
     name: 'users',
-    component: users
+    component: users,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/profile',
     name: 'profile',
-    component: profile
+    component: profile,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/userForm',
     name: 'userForm',
-    component: usersForms
+    component: usersForms,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/patient',
     name: 'patient',
-    component: patient
+    component: patient,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/professional',
     name: 'professional',
-    component: professional
+    component: professional,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/clinic',
     name: 'clinic',
-    component: clinic
+    component: clinic,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   },
   {
     path: '/schedule',
     name: 'schedule',
-    component: schedule
+    component: schedule,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      next('/login')
+    }
   }
   ]
 })
