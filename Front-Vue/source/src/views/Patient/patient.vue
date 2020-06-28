@@ -57,9 +57,9 @@ export default {
     }
   },
   mounted () {
-    Patient.listar().then(respost => {
-      console.log(respost.data)
-      this.listPatients = respost.data
+    Patient.listar().then(response => {
+      console.log(response.data)
+      this.listPatients = response.data
     })
   }
 }

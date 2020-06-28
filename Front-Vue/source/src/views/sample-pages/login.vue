@@ -11,16 +11,16 @@
               <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Username</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="this.credentials.login">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="this.login">
                   <i class="mdi mdi-account"></i>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="this.credentials.password">
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model ="this.password">
                   <i class="mdi mdi-eye"></i>
                 </div>
                 <div class="mt-5">
-                  <a class="btn btn-block btn-warning btn-lg font-weight-medium" @click="this.login()">Login</a>
+                  <a class="btn btn-block btn-warning btn-lg font-weight-medium" @click="loginFunction">Login</a>
                 </div>
                 <div class="mt-3 text-center">
                   <a class="auth-link text-white">Forgot password?</a>
@@ -42,16 +42,14 @@ export default {
   name: 'login',
   data () {
     return {
-      credentials: {
-        login: '',
-        password: ''
-      }
+      login: '',
+      password: ''
     }
   },
   methods: {
-    login: () => {
+    loginFunction: function () {
       // Auth.login().then(() => {
-      console.log(this.credentials)
+      console.log(this.login, this.password, 'asdasd')
       // })
     }
   }
