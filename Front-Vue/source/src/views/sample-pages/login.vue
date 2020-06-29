@@ -38,6 +38,9 @@
 <script lang="js">
 import Auth from '../../services/login'
 import {tokenLogin} from '../../services/auth'
+import Router from 'vue-router'
+
+const router = new Router({})
 
 export default {
   name: 'login',
@@ -51,6 +54,7 @@ export default {
     loginFunction: function () {
       Auth.login({email: this.email, password: this.password}).then((response) => {
         tokenLogin(response.data.token)
+        router.push({name: 'dashboard'})
         console.log(response.data.token)
       })
     }
