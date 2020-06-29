@@ -11,12 +11,12 @@
               <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Username</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="this.login">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="login">
                   <i class="mdi mdi-account"></i>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model ="this.password">
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
                   <i class="mdi mdi-eye"></i>
                 </div>
                 <div class="mt-5">
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="js">
-// import Auth from '../../services/login'
+import Auth from '../../services/login'
 
 export default {
   name: 'login',
@@ -48,9 +48,9 @@ export default {
   },
   methods: {
     loginFunction: function () {
-      // Auth.login().then(() => {
-      console.log(this.login, this.password, 'asdasd')
-      // })
+      Auth.login({email: this.login, password: this.password}).then(() => {
+        console.log('logado')
+      })
     }
   }
 
