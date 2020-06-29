@@ -31,7 +31,7 @@ import tooltips from '../views/ui-components/tooltips'
 import error404 from '../views/sample-pages/error-404'
 import error500 from '../views/sample-pages/error-500'
 
-// import login from '../views/sample-pages/login'
+import login from '../views/sample-pages/login'
 import register from '../views/sample-pages/register'
 
 import patient from '../views/Patient/patient'
@@ -53,7 +53,7 @@ export default new Router({
     component: dashboard,
     beforeEnter: (to, from, next) => {
       if (isAuthenticated) next()
-      next('/login')
+      else next('/login')
     }
   },
   {
@@ -71,11 +71,15 @@ export default new Router({
     name: 'error-500',
     component: error500
   },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: login
-  // },
+  {
+    path: '/login',
+    name: 'login',
+    component: login,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated) next()
+      else next('/dashboard')
+    }
+  },
   {
     path: '/register',
     name: 'register',
@@ -157,7 +161,7 @@ export default new Router({
     component: users,
     beforeEnter: (to, from, next) => {
       if (isAuthenticated) next()
-      next('/login')
+      else next('/login')
     }
   },
   {
@@ -166,7 +170,7 @@ export default new Router({
     component: profile,
     beforeEnter: (to, from, next) => {
       if (isAuthenticated) next()
-      next('/login')
+      else next('/login')
     }
   },
   {
@@ -175,7 +179,7 @@ export default new Router({
     component: usersForms,
     beforeEnter: (to, from, next) => {
       if (isAuthenticated) next()
-      next('/login')
+      else next('/login')
     }
   },
   {
@@ -184,7 +188,7 @@ export default new Router({
     component: patient,
     beforeEnter: (to, from, next) => {
       if (isAuthenticated) next()
-      next('/login')
+      else next('/login')
     }
   },
   {
@@ -192,7 +196,7 @@ export default new Router({
     name: 'professional',
     component: professional,
     beforeEnter: (to, from, next) => {
-      if (isAuthenticated) next()
+      if (!isAuthenticated) next()
       next('/login')
     }
   },
@@ -201,7 +205,7 @@ export default new Router({
     name: 'clinic',
     component: clinic,
     beforeEnter: (to, from, next) => {
-      if (isAuthenticated) next()
+      if (!isAuthenticated) next()
       next('/login')
     }
   },
@@ -210,7 +214,7 @@ export default new Router({
     name: 'schedule',
     component: schedule,
     beforeEnter: (to, from, next) => {
-      if (isAuthenticated) next()
+      if (!isAuthenticated) next()
       next('/login')
     }
   }

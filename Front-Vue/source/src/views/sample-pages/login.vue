@@ -11,7 +11,7 @@
               <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Username</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="login">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" v-model="email">
                   <i class="mdi mdi-account"></i>
                 </div>
                 <div class="form-group">
@@ -37,19 +37,21 @@
 
 <script lang="js">
 import Auth from '../../services/login'
+import {tokenLogin} from '../../services/auth'
 
 export default {
   name: 'login',
   data () {
     return {
-      login: '',
+      email: '',
       password: ''
     }
   },
   methods: {
     loginFunction: function () {
-      Auth.login({email: this.login, password: this.password}).then(() => {
-        console.log('logado')
+      Auth.login({email: this.email, password: this.password}).then((response) => {
+        tokenLogin(response.data.token)
+        console.log(response.data.token)
       })
     }
   }

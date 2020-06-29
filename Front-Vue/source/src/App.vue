@@ -1,10 +1,9 @@
 <template lang="html">
   <div id="app">
-  <login/>
-    <!-- <div class="container-scroller">
-      <app-header/>
+    <div class="container-scroller">
+      <app-header v-if="authenticated"/>
       <div class="container-fluid page-body-wrapper">
-        <app-sidebar/>
+        <app-sidebar v-if="authenticated"/>
         <div class="main-panel">
           <div class="content-wrapper">
             <router-view></router-view>
@@ -12,7 +11,7 @@
           <app-footer/>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -21,6 +20,8 @@ import AppHeader from '../src/components/partials/AppHeader'
 import AppSidebar from '../src/components/partials/AppSidebar'
 import AppFooter from '../src/components/partials/AppFooter'
 import Login from './views/sample-pages/login'
+import {isAuthenticated} from './services/auth'
+
 export default{
   name: 'app',
   components: {
@@ -28,6 +29,11 @@ export default{
     AppSidebar,
     AppFooter,
     Login
+  },
+  data: () => {
+    return {
+      authenticated: isAuthenticated
+    }
   }
 }
 </script>
