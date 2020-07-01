@@ -41,9 +41,12 @@ import schedule from "../views/schedule/schedule";
 
 // Sample Pages
 import profile from "../views/User/profile";
-import { isAuthenticated } from "../services/auth";
+
 
 Vue.use(Router);
+
+const isAuthenticated = !!localStorage.getItem('@soull-token') 
+
 
 export default new Router({
   linkActiveClass: "active",
@@ -145,6 +148,9 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         if (isAuthenticated) next();
         else next("/login");
+      },
+      beforeRouteUpdate : () => {
+
       }
     },
     {
@@ -152,8 +158,8 @@ export default new Router({
       name: "users",
       component: users,
       beforeEnter: (to, from, next) => {
-        if (isAuthenticated) next();
-        else next("/login");
+        if (isAuthenticated) next()
+        else next("/login")
       }
     },
     {
@@ -212,12 +218,16 @@ export default new Router({
     },
     {
       path: "/login",
-      name: "login",
+      name: 'login',
       component: login,
       beforeEnter: (to, from, next) => {
-        if (isAuthenticated) next();
-        else next("/dashboard");
-      }
+        if (!isAuthenticated) next();
+        else next('/dashboard');
+      },
+      beforeRouteLeave : (to, from, next) => {
+        if (!isAuthenticated) next();
+        else next('/dashboard');
+      } 
     }
   ]
 });

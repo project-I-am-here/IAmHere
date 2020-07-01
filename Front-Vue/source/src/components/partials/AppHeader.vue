@@ -108,7 +108,7 @@
           </template>
           <b-dropdown-item to="/profile/" class="preview-item flex-wrap">Perfil</b-dropdown-item>
 
-          <b-dropdown-item href="#" class="preview-item flex-wrap">Sair</b-dropdown-item>
+          <b-dropdown-item href="#" class="preview-item flex-wrap" v-on:click="logOut">Sair</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <button class="navbar-toggler navbar-toggler-right align-self-center" type="button" @click="collapedMobileSidebar()">
@@ -119,11 +119,16 @@
 </template>
 
 <script lang="js">
+import {logout} from '../../services/auth'
+
 export default {
   name: 'app-header',
   methods: {
     collapedMobileSidebar: () => {
       document.querySelector('.sidebar').classList.toggle('active')
+    },
+    logOut: () => {
+      logout()
     }
   }
 }

@@ -52,9 +52,9 @@ export default {
   },
   methods: {
     loginFunction: function () {
-      Auth.login({email: this.email, password: this.password}).then((response) => {
-        tokenLogin(response.data.token)
-        router.push({name: 'dashboard'})
+      Auth.login({email: this.email, password: this.password}).then(async (response) => {
+        await tokenLogin(response.data.token)
+          router.replace('dashboard/');
         console.log(response.data.token)
       })
     }
