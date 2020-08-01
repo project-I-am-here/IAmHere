@@ -53,8 +53,8 @@
 
 <script>
 export default {
-  name: "CreateUser",
-};
+  name: 'CreateUser'
+}
 </script>
 
 <style></style>

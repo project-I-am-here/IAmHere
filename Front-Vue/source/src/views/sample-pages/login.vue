@@ -54,7 +54,7 @@ export default {
     loginFunction: function () {
       Auth.login({email: this.email, password: this.password}).then(async (response) => {
         await tokenLogin(response.data.token)
-          router.replace('dashboard/');
+        router.replace('dashboard/')
         console.log(response.data.token)
       })
     }
@@ -65,6 +65,5 @@ export default {
 
 <style scoped lang="scss">
 .login {
-
 }
 </style>
