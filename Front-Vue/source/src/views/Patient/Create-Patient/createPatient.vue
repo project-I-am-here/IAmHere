@@ -1,12 +1,19 @@
 <template lang="html">
   <section class="modals">
-    <b-btn v-b-modal.modallg variant="primary"
-      >Novo Paciente <i class="mdi mdi-account-plus ml-1"></i
+    <b-btn v-b-modal.modallg variant="primary" v-on:click="hover"
+      >{{ buttonTitle }} <i class="mdi ml-1" :class="icon"></i
     ></b-btn>
-    <div class="card">
+    <div class="card" v-if="hovering">
       <div class="card-body">
         <!-- Modal starts -->
-        <b-modal id="modallg" title="Novo Paciente" size="lg">
+        <b-modal
+          id="modallg"
+          title="Novo Paciente"
+          size="ml"
+          @show="hovering"
+          @hidden="hover"
+          @ok="hover"
+        >
           <div class="container">
             <div class="row">
               <div class="col-6 ">
@@ -55,7 +62,18 @@
 
 <script>
 export default {
-  name: 'CreateUser'
+  name: 'CreatePatient',
+  props: ['buttonTitle', 'icon'],
+  data: function() {
+    return {
+      hovering: false
+    }
+  },
+  methods: {
+    hover: function() {
+      this.hovering = !this.hovering
+    }
+  }
 }
 </script>
 
