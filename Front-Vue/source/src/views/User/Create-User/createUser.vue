@@ -23,8 +23,23 @@
                 </b-form-group>
               </div>
               <div class="col-md-6">
-                <b-form-group vertical label="Dia do aniversário">
+                <b-form-group vertical label="Data de Nascimento">
                   <b-form-input placeholder="DD/MM/AAAA"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-6">
+                <b-form-group vertical label="Telefone">
+                  <b-form-input placeholder="(99) 99999-9999"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-6">
+                <b-form-group vertical label="RG">
+                  <b-form-input placeholder="RG"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-md-6">
+                <b-form-group vertical label="CPF">
+                  <b-form-input placeholder="CPF"></b-form-input>
                 </b-form-group>
               </div>
             </div>
