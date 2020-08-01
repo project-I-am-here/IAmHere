@@ -45,7 +45,7 @@ import profile from "../views/User/profile";
 
 Vue.use(Router);
 
-const isAuthenticated = !!localStorage.getItem('@soull-token') 
+const isAuthenticated = !!localStorage.getItem('@soull-token')
 
 
 export default new Router({
@@ -217,17 +217,17 @@ export default new Router({
       }
     },
     {
-      path: "/login",
+      path: '/login',
       name: 'login',
       component: login,
       beforeEnter: (to, from, next) => {
-        if (!isAuthenticated) next();
-        else next('/dashboard');
+        if (!isAuthenticated) next()
+        else next('/dashboard')
       },
-      beforeRouteLeave : (to, from, next) => {
-        if (!isAuthenticated) next();
-        else next('/dashboard');
-      } 
+      beforeRouteLeave: (to, from, next) => {
+        if (!isAuthenticated) next()
+        else next('/dashboard')
+      }
     }
   ]
-});
+})

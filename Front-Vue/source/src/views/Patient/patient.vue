@@ -1,10 +1,16 @@
 <template lang="html">
   <section class="Patient">
+
     <div class="row">
       <div class="col-9 grid-margin">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title mb-4">Pacientes</h5>
+            <div class="row">
+              <div class="col-6">
+                <CreateUser/>
+            </div>
+              <div class="col-6">
             <b-form-group>
               <b-input-group>
                 <b-form-input placeholder="Username"></b-form-input>
@@ -13,6 +19,8 @@
                 </b-input-group-text>
               </b-input-group>
             </b-form-group>
+            </div>
+            </div>
             <div class="table-responsive">
               <table class="table center-aligned-table">
                 <thead>
@@ -48,8 +56,12 @@
 
 <script lang="js">
 import Patient from '../../services/patient'
+import CreateUser from '../User/Create-User/CreateUser'
 
 export default {
+  components: {
+    CreateUser
+  },
   name: 'Patients',
   data () {
     return {

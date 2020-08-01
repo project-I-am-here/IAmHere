@@ -26,9 +26,9 @@ export default {
     }
   },
   mounted () {
-    Clinic.listar().then(respost => {
-      console.log(respost.data)
-      this.listClinics = respost.data
+    Clinic.listar().then(response => {
+      console.log(response.data)
+      this.listClinics = response.data
     })
   }
 }

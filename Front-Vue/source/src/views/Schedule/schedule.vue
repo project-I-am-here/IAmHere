@@ -79,9 +79,9 @@ export default {
     }
   },
   mounted () {
-    Schedule.listar().then(respost => {
-      console.log(respost.data)
-      this.listSchedules = respost.data
+    Schedule.listar().then(response => {
+      console.log(response.data)
+      this.listSchedules = response.data
     })
   }
 }

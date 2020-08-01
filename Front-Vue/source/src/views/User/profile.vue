@@ -50,13 +50,13 @@ export default {
     }
   },
   mounted () {
-    Clinic.listar().then(respost => {
-      console.log(respost.data)
-      this.clinic = respost.data
+    Clinic.listar().then(response => {
+      console.log(response.data)
+      this.clinic = response.data
     })
-    Users.listar().then(respost => {
-      console.log(respost.data)
-      this.user = respost.data
+    Users.listar().then(response => {
+      console.log(response.data)
+      this.user = response.data
     })
   }
 }

@@ -67,9 +67,9 @@ export default {
     }
   },
   mounted () {
-    User.listar().then(respost => {
-      console.log(respost.data)
-      this.listUser = respost.data
+    User.listar().then(response => {
+      console.log(response.data)
+      this.listUser = response.data
     })
   }
 }
