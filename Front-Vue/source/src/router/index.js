@@ -140,7 +140,7 @@ export default new Router({
       component: tooltips
     },
     {
-      path: '/dashboard',
+      path: '/',
       name: 'dashboard',
       component: dashboard,
       beforeEnter: (to, from, next) => {
@@ -217,11 +217,11 @@ export default new Router({
       component: login,
       beforeEnter: (to, from, next) => {
         if (!isAuthenticated) next()
-        else next('/dashboard')
+        else next('/')
       },
       beforeRouteLeave: (to, from, next) => {
         if (!isAuthenticated) next()
-        else next('/dashboard')
+        else next('/')
       }
     }
   ]
