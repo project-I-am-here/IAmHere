@@ -1,6 +1,8 @@
 <template lang="html">
   <section class="modals">
-    <b-btn v-b-modal.modallg variant="primary">Novo Paciente <i class="mdi mdi-account-plus ml-1"></i></b-btn>
+    <b-btn v-b-modal.modallg variant="primary"
+      >Novo Paciente <i class="mdi mdi-account-plus ml-1"></i
+    ></b-btn>
     <div class="card">
       <div class="card-body">
         <!-- Modal starts -->
