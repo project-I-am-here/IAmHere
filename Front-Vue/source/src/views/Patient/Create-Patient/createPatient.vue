@@ -1,10 +1,10 @@
 <template lang="html">
-  <section class="modals">
+  <div>
     <b-btn v-b-modal.modallg variant="primary" v-on:click="hover"
       >{{ buttonTitle }} <i class="mdi ml-1" :class="icon"></i
     ></b-btn>
     <div class="card" v-if="hovering">
-      <div class="card-body">
+      <div>
         <!-- Modal starts -->
         <b-modal
           id="modallg"
@@ -65,7 +65,7 @@
         <!-- Modal Ends -->
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
