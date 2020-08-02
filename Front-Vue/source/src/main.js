@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
+import { VueMaskDirective } from 'v-mask'
 
 Vue.use(BootstrapVue)
+Vue.directive('mask', VueMaskDirective)
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
