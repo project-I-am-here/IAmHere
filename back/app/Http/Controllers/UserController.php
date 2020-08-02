@@ -22,13 +22,13 @@ class UserController extends Controller
 
     public function __construct(Account $account)
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $account;
     }
 
     public function profile()
     {
-        return response()->json(['user' => Auth::user()], 200);
+        return response()->json(Auth::user(), 200);
     }
 
     public function getAll(){
