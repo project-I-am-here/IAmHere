@@ -53,6 +53,14 @@
               </div>
             </div>
           </div>
+          <template v-slot:modal-footer>
+            <b-button variant="outline-secondary" size="sm" @click="hover">
+              Cancelar
+            </b-button>
+            <b-button variant="primary" size="sm" @click="hover">
+              Salvar
+            </b-button>
+          </template>
         </b-modal>
         <!-- Modal Ends -->
       </div>
