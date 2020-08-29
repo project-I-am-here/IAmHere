@@ -5,18 +5,19 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Professional extends Model
+class ScheduleConfig extends Model
 {
     use Authenticatable, Authorizable;
-    protected $table = "professional";
+    protected $table = "schedule_config";
 
     protected $fillable = [
         'id',
-        'especialidades',
-        'crp',
-        'id_clinic',
-        'id_account',
-        'status'
+        'professional_id',
+        'date_start',
+        'date_end',
+        'interval',
+        'hour_start',
+        'hour_end'
     ];
 
     public $timestamps = false;

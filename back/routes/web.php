@@ -40,6 +40,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete("/{id}", "ClinicController@destroy");
     });
 
+
+    $router->group(['prefix' => "/schedule"], function () use ($router){
+        $router->get("/", "ScheduleController@getAll");
+    });
+
     $router->group(['prefix' => "/professional"], function () use ($router){
         $router->get("/", "ProfessionalController@getAll");
         $router->get("/{id}", "ProfessionalController@get");
