@@ -20,6 +20,8 @@ class Patient extends Model
         'id_account'
     ];
 
+
+
     public $timestamps = false;
 }
 

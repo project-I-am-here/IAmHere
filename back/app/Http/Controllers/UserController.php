@@ -55,13 +55,14 @@ class UserController extends Controller
         $account = $this->model->create($request->all());
         // Patient::create([]);
         return response()->json($account, Response::HTTP_CREATED);
+
+
     }
 
     public function update($id, Request $request){
         $account = $this->model->find($id)
             ->update($request->all());
         return response()->json($account, Response::HTTP_OK);
-
     }
 
     public function destroy($id){
