@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PatientController extends Controller
 {
     /**
-     * Instantiate a new PatientController instance.
+     * Instantiate a new UserController instance.
      *
      * @return void
      */
@@ -21,43 +21,65 @@ class PatientController extends Controller
 
     public function __construct(Patient $patient)
     {
-        //$this->middleware('auth');
+//        $this->middleware('auth');
         $this->model = $patient;
     }
 
-
-    public function profile()
-    {
-        return response()->json(['user' => Auth::user()], 200);
-    }
-
+    //Busca todos os pacientes
     public function getAll(){
-        $patient = $this->model->all();
-        if(count($patient) > 0){
-            return response()->json($patient, Response::HTTP_OK);
-        }else{
-            return response()->json([], Response::HTTP_OK);
-        }
+        $account = Account::with('patient')
+            ->where('type', '1')
+            ->get();
+
+//        echo $account->observation;
+//        array_push($patient, [
+//            'id' =>  $account['id'],
+//            'name' =>  $account['name'],
+//            'email' =>  $account['email'],
+//            'email' =>  $account['email'],
+//            'email' =>  $account['email'],
+//
+//        ]);
+
+//        nome
+//email
+//celular
+//id_professional
+        return response()->json($account, Response::HTTP_OK);
     }
 
-    public function get($id_patient){
-        $patient = $this->model->find($id_patient);
-        return response()->json($patient, Response::HTTP_OK);
-
+    //Busca por id do usuário
+    public function get($id){
+        $account = Account::where('id', $id)->with('patient', 'address')->get();
+        return response()->json($account, Response::HTTP_OK);
     }
+
+    public function search($name = null){
+        $account = Account::with('address')
+            ->with('patient')
+            ->where([['name', 'like', "%$name%"],['type', '=' , 1]])
+            ->get();
+
+        return response()->json($account, Response::HTTP_OK);
+    }
+
     public function store(Request $request){
-        $patient= $this->model->create($request->all());
-        return response()->json($patient, Response::HTTP_CREATED);
+        $data = $request->all();
+        unset($data['id']);
+        $account = $this->model->create($data);
+        // Patient::create([]);
+        return response()->json($account, Response::HTTP_CREATED);
     }
-    public function update($id, Request $request){
-        $patient = $this->model->find($id)
-            ->update($request->all());
 
-        return response()->json($patient, Response::HTTP_OK);
+    public function update($id, Request $request){
+        $account = $this->model->find($id)
+            ->update($request->all());
+        return response()->json($account, Response::HTTP_OK);
+
     }
 
     public function destroy($id){
-        $patient = $this->model->find($id)
+        $account = $this->model->find($id)
             ->delete();
 
         return response()->json(null, Response::HTTP_OK);

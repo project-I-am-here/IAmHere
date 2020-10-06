@@ -25,11 +25,14 @@ class ProfessionalController extends Controller
         $this->model = $professional;
     }
 
-
     public function getAll(){
-        $professional = $this->model->all();
-        if(count($professional) > 0){
-            return response()->json($professional, Response::HTTP_OK);
+        $account = Account::with('address')
+            ->with('professional')
+            ->where('type', '2')
+            ->get();
+
+        if(count($account) > 0){
+            return response()->json($account, Response::HTTP_OK);
         }else{
             return response()->json([], Response::HTTP_OK);
         }
@@ -38,8 +41,13 @@ class ProfessionalController extends Controller
     public function get($id_professional){
         $professional = $this->model->find($id_professional);
         return response()->json($professional, Response::HTTP_OK);
-
     }
+
+    public function getMyPatients($id_professional){
+        $items = $this->model->getMyPatients($id_professional);
+        return response()->json($items, Response::HTTP_OK);
+    }
+
     public function store(Request $request){
         $professional= $this->model->create($request->all());
         return response()->json($professional, Response::HTTP_CREATED);

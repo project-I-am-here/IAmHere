@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,6 @@ class AuthController extends Controller
             $acount = new Account();
 
             $acount->name = $request->input('name');
-            $acount->surname = $request->input('surname');
             $acount->email = $request->input('email');
             $plainPassword = $request->input('password');
             $acount->password = app('hash')->make($plainPassword);

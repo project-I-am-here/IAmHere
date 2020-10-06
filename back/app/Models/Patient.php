@@ -8,11 +8,12 @@ use Laravel\Lumen\Auth\Authorizable;
 class Patient extends Model
 {
     use Authenticatable, Authorizable;
+
     protected $table = "patient";
 
     protected $fillable = [
         'id',
-        'crp_professional',
+        'id_professional',
         'celphone',
         'observation',
         'graduation',
@@ -21,7 +22,12 @@ class Patient extends Model
     ];
 
 
-
     public $timestamps = false;
+
+    public function account()
+    {
+        return  $this->hasMany(Account::class, 'id', 'id_account');
+    }
+
 }
 

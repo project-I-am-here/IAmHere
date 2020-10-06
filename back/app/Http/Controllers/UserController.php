@@ -28,7 +28,18 @@ class UserController extends Controller
 
     public function profile()
     {
-        return response()->json(Auth::user(), 200);
+        $account_id = Auth::user()->id;
+
+        //buscar dados por type
+        if(Auth::user()->type==1){
+            $account = Account::where('id', $account_id)->with('patient', 'address')->first();
+            return response()->json($account, Response::HTTP_OK);
+        }
+        else{
+            $account = Account::where('id', $account_id)->with('professional', 'address')->first();
+            return response()->json($account, Response::HTTP_OK);
+        }
+
     }
 
     public function getAll(){

@@ -22,43 +22,8 @@ class Clinic extends Model
         'status'
     ];
 
-    public function getClinic($id) {
-        $items = [];
-
-        $result = Clinic::where('clinic.id', $id)
-            ->join('adress', 'clinic.id_adress', '=', 'adress.id')
-            ->select(
-                'clinic.id',
-                'clinic.name',
-                'clinic.id_account',
-                'clinic.phone',
-                'adress.street',
-                'adress.number',
-                'adress.neighborhood',
-                'adress.state',
-                'adress.zipcod'
-            )
-            ->where(
-                'clinic.status', '=', '1'
-            )
-            ->get();
-
-        //echo $result[0]['id'];
-        $items = [
-            'id' => $result[0]['id'],
-            'name' => $result[0]['name'],
-            'id_account' => $result[0]['id_account'],
-            'phone' => $result[0]['id_account'],
-            'adress' => [
-                'street' => $result[0]['street'],
-                'number' => $result[0]['number'],
-                'neighborhood' => $result[0]['neighborhood'],
-                'state' => $result[0]['state'],
-                'zipcod' =>$result[0]['zipcod'],
-            ],
-        ];
-
-        return $items;
+    public function address() {
+        return  $this->hasMany(Address::class, 'id', 'id_adress');
     }
 
     public $timestamps = false;

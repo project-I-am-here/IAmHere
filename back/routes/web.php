@@ -48,6 +48,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->group(['prefix' => "/professional"], function () use ($router){
         $router->get("/", "ProfessionalController@getAll");
         $router->get("/{id}", "ProfessionalController@get");
+        $router->get("/patients/{id}", "ProfessionalController@getMyPatients");
         $router->post("/", "ProfessionalController@store");
         $router->put("/{id}", "ProfessionalController@update");
         $router->delete("/{id}", "ProfessionalController@destroy");
@@ -61,6 +62,26 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete("/{id}", "PatientController@destroy");
     });
 
+    $router->group(['prefix' => "/patient"], function () use ($router){
+        $router->get("/", "PatientController@getAll");
+        $router->get("/{id}", "PatientController@get");
+        $router->post("/", "PatientController@store");
+        $router->put("/{id}", "PatientController@update");
+        $router->delete("/{id}", "PatientController@destroy");
+    });
+
+    $router->group(['prefix' => "/historic"], function () use ($router){
+        $router->get("/all/{id_patient}", "HistoricController@getAll");
+        $router->get("/{id}", "HistoricController@get");
+        $router->post("/", "HistoricController@store");
+        $router->put("/{id}", "HistoricController@update");
+        $router->delete("/{id}", "HistoricController@destroy");
+    });
+
+    $router->group(['prefix' => "/mood"], function () use ($router){
+        $router->get("/{id}", "MoodController@get");
+        $router->post("/", "MoodController@store");
+    });
 });
 
 
