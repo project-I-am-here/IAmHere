@@ -31,20 +31,16 @@ class PatientController extends Controller
             ->where('type', '1')
             ->get();
 
-//        echo $account->observation;
-//        array_push($patient, [
-//            'id' =>  $account['id'],
-//            'name' =>  $account['name'],
+//        array_push($patientList, [
+//            'id' =>  $account->id,
+//            'name' =>  $account->name,
 //            'email' =>  $account['email'],
-//            'email' =>  $account['email'],
-//            'email' =>  $account['email'],
+//            'email' =>  $account['cellphone'],
+//            'email' =>  $account->patiente->['id_professional'],
 //
 //        ]);
 
-//        nome
-//email
-//celular
-//id_professional
+
         return response()->json($account, Response::HTTP_OK);
     }
 
@@ -76,6 +72,20 @@ class PatientController extends Controller
             ->update($request->all());
         return response()->json($account, Response::HTTP_OK);
 
+    }
+
+    public function addProfessional($id){
+        $patient = $this->model->where('id_account', '=', $id)
+            ->update(['id_professional' => Auth::user()->id]);
+
+        return response()->json(array('msg'=>'Registrado com sucesso!!'), Response::HTTP_OK);
+    }
+
+    public function dellProfessional($id){
+        $patient = $this->model->where('id_account', '=', $id)
+            ->update(['id_professional' => null]);
+
+        return response()->json(array('msg'=>'Removido com sucesso!!'), Response::HTTP_OK);
     }
 
     public function destroy($id){

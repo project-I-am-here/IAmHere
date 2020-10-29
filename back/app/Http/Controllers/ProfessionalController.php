@@ -52,6 +52,7 @@ class ProfessionalController extends Controller
         $professional= $this->model->create($request->all());
         return response()->json($professional, Response::HTTP_CREATED);
     }
+
     public function update($id, Request $request){
         $professional = $this->model->find($id)
             ->update($request->all());

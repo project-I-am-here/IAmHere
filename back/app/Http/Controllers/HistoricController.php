@@ -25,7 +25,7 @@ class HistoricController extends Controller
     }
 
     public function getAll($id_patient){
-        $historic = $this->model->where('id_patient', '=', $id_patient)->get();
+        $historic = $this->model->where('id_patient', '=', $id_patient)->orderBy('date', 'DESC')->get();
 
         if($id_patient == Auth::user()->id || Auth::user()->type == 2) {
             if (count($historic) > 0) {
@@ -44,7 +44,8 @@ class HistoricController extends Controller
     public function store(Request $request){
         $data = $request->all();
         unset($data['id']);
-        $data['date'] = now();
+//        $data['date'] = '2020-05-09 00:00:00';
+        $data['date'] = date('Y-m-d H:i:s');
         $data['id_professional'] = Auth::user()->id;
 
         $historic= $this->model->create($data);
