@@ -42,8 +42,14 @@ class ClinicController extends Controller
     }
 
     public function get($id){
-        $items = $this->model->find($id)->with('address')->first();
-        return response()->json($items, Response::HTTP_OK);
+        $items = $this->model->where('id', '=', $id)->with('address')->get();
+
+        if(count($items) > 0){
+            return response()->json($items, Response::HTTP_OK);
+        }
+       else{
+           return response()->json([array('msg' => 'Nenhum registro encontrado')], Response::HTTP_EXPECTATION_FAILED);
+        }
     }
 
 

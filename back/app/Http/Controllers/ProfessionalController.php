@@ -34,7 +34,7 @@ class ProfessionalController extends Controller
         if(count($account) > 0){
             return response()->json($account, Response::HTTP_OK);
         }else{
-            return response()->json([], Response::HTTP_OK);
+            return response()->json([array('msg' => 'Nenhum registro encontrado')], Response::HTTP_EXPECTATION_FAILED);
         }
     }
 
@@ -65,6 +65,30 @@ class ProfessionalController extends Controller
             ->delete();
 
         return response()->json(null, Response::HTTP_OK);
+    }
+
+    //Atualiza Clinica do profissional
+    public function joinClinic($id){
+
+        $Professional =   $this->model->where('id_account', '=', Auth::user()->id )->update(['id_clinic' => $id]);
+        if($Professional ) {
+            return response()->json(array('msg' => 'Registrado com sucesso!!'), Response::HTTP_OK);
+        }
+        else{
+            return response()->json([array('msg' => 'Erro ao adicionar afiliação')], Response::HTTP_EXPECTATION_FAILED);
+        }
+    }
+
+    //remove Clinica do profissional
+    public function deleteClinic($id){
+
+        $Professional =   $this->model->where('id_account', '=', $id )->update(['id_clinic' => '']);
+        if($Professional ) {
+            return response()->json(array('msg' => 'Removido com sucesso!!'), Response::HTTP_OK);
+        }
+        else{
+            return response()->json([array('msg' => 'Erro ao remover afiliação')], Response::HTTP_EXPECTATION_FAILED);
+        }
     }
 
 }

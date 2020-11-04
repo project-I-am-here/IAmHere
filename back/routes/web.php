@@ -36,13 +36,23 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get("/", "ClinicController@getAll");
         $router->get("/{id}", "ClinicController@get");
         $router->post("/", "ClinicController@store");
+        $router->put("/join/{id}", "ProfessionalController@joinClinic");
+        $router->put("/delete/{id}", "ProfessionalController@deleteClinic");
         $router->put("/{id}", "ClinicController@update");
         $router->delete("/{id}", "ClinicController@destroy");
+        $router->get("/schedule/{id}", "ScheduleController@getScheduleClinic");
     });
 
 
     $router->group(['prefix' => "/schedule"], function () use ($router){
         $router->get("/", "ScheduleController@getAll");
+        $router->get("/{id}", "ScheduleController@get");
+
+        //Configurações da agenda
+        $router->get("/config/{id}", "ScheduleConfigController@get");
+        $router->post("/config/", "ScheduleConfigController@store");
+        $router->put("/config/{id}", "ScheduleConfigController@update");
+        $router->delete("/config/{id}", "ScheduleConfigController@destroy");
     });
 
     $router->group(['prefix' => "/professional"], function () use ($router){
@@ -55,6 +65,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get("/patients/{id}", "ProfessionalController@getMyPatients");
         $router->post("/addPatient/{id}", "PatientController@addProfessional");
         $router->post("/dellPatient/{id}", "PatientController@dellProfessional");
+        $router->get("/schedule/{id}", "ScheduleController@getScheduleProfessional");
+        $router->get("/schedule/config/{id}", "ScheduleConfigController@getConfigProfessional");
     });
 
     $router->group(['prefix' => "/patient"], function () use ($router){
@@ -63,15 +75,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post("/", "PatientController@store");
         $router->put("/{id}", "PatientController@update");
         $router->delete("/{id}", "PatientController@destroy");
+        $router->get("/schedule/{id}", "ScheduleController@getSchedulePatient");
     });
-
-//    $router->group(['prefix' => "/patient"], function () use ($router){
-//        $router->get("/", "PatientController@getAll");
-//        $router->get("/{id}", "PatientController@get");
-//        $router->post("/", "PatientController@store");
-//        $router->put("/{id}", "PatientController@update");
-//        $router->delete("/{id}", "PatientController@destroy");
-//    });
 
     $router->group(['prefix' => "/historic"], function () use ($router){
         $router->get("/all/{id_patient}", "HistoricController@getAll");
